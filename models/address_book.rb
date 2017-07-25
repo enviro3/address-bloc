@@ -8,6 +8,9 @@ class AddressBook
     @entries = []
   end
 
+  def destroy_all
+    @entries = []
+  end
 
   def add_entry(name, phone_number, email)
     index = 0

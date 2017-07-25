@@ -71,14 +71,14 @@ class MenuController
 
   def view_entry_number
     print "Fetch entry number: "
-    entry_number = (gets.chomp.to_i) -1
+    entry_number = (gets.chomp.to_i)-1
 
     if entry_number > -1 && entry_number < @address_book.entries.length
+      puts address_book.entries[entry_number]
+      puts "Press enter to return to the main menu"
+      gets.chomp
       system "clear"
-      requested_entry = address_book.entries[entry_number]
-      main_menu
     else
-      system "clear"
       puts "That entry is invalid. Please choose an entry number below #{@address_book.entries.length}"
       main_menu
     end
@@ -171,7 +171,8 @@ class MenuController
   end
 
   def delete_all_entries
-    @address_book = AddressBook.new
+    #previous solution: @address_book = AddressBook.new
+    @address_book.destroy_all
   end
 
   def edit_entry(entry)
